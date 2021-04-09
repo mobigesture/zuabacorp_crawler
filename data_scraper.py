@@ -3,9 +3,8 @@ import json
 from bs4 import BeautifulSoup
 
 
-
-
 class ZAUBACORP:
+
     def __init__(self, url):
         self.url = url
         self.products = []
@@ -22,8 +21,10 @@ class ZAUBACORP:
         page = self.getPageParser(self.url)
         company_details = page.findAll("div", {"class": "col-lg-12 col-md-12 col-sm-12 col-xs-12"})
         directors_details = []
+        #As we have comon class for multiple tags looping all details.
         for company_detail in company_details:
             h4 = company_detail.find("h4", {"class": "company-data"})
+            #Checking for Director Details
             if str(h4.get_text()).strip() == "Director Details":
                 directors = company_detail.findAll('tr', {"class": "accordion-toggle main-row"})
                 other_directorships = company_detail.findAll('td', {"class": "hiddenRow"})
