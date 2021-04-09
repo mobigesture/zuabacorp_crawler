@@ -50,6 +50,7 @@ class ZAUBACORP:
                         'OtherDirectorships': other_details
                     }
                     directors_details.append(d_details)
+                #Breaking after getting Director details.
                 break
         return directors_details
 
